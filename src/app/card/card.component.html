@@ -1,0 +1,23 @@
+<mat-grid-list cols="3" rowHeight="405px" gutterSize="20px">
+    <mat-grid-tile [i]="i" *ngFor="let cardprod of card; let i = index" class="my-grid-tile">
+        <div class="box list-group-item clearfix">
+            <span >
+                <img 
+                    [src]="cardprod.imgPath" 
+                    alt="{{cardprod.name}}"
+                    class="img-fluid rounded mx-auto d-block img-thumbnail"
+                    > 
+                </span>
+                <p class="list-group-item-heading">Name: {{cardprod.name}} </p>
+                <p class="list-group-item-text">Description: {{cardprod.description}}</p>
+                <p class="list-group-item-text">Price: {{cardprod.price}}</p>
+                <hr>
+                <div class="text-center">
+                    <button mat-icon-button  aria-label="Example icon button with a home icon" (click)="delCardProd($event, cardprod)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    
+                </div>  
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

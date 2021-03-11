@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.accent {
+    color: dimgray;
+    background-color: lightgray;
+    border: dimgray solid 2px;
+    border-radius: 4px;
+  } 
+
+.header{
+    background-color: rgb(243, 243, 243);
+    border: 1px solid dimgray;
+    
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.f_row{
+    margin-top: 5px;
+    border: 1px solid black;
+}
+
+h2{
+    vertical-align: middle;
+    margin: 0;
+    
+}
+.logo{
+    text-decoration: 0;
+    color: black;
+}
+
+
+h4{
+    vertical-align: bottom;
+}
+
+.nav-links{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+a{
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 200px;
+    color: dimgray;
+  
+}
+
+.s_row{
+    margin-top: 10px;
+}
+
+hr{
+    
+    border: 0;
+    clear: both;
+    
+    width: 73%;
+    height: 1px;
+    background-color: darkgray;
+}
