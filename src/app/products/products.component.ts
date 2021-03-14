@@ -4,6 +4,7 @@ import { FirestoreService } from '../shared/firestore.service';
 import { Products } from '../products';
 import { ToCardService } from '../shared/to-card.service';
 import { ToFavlistService } from '../shared/to-favlist.service';
+import { Card } from '../card';
 
 
 @Component({
@@ -13,8 +14,10 @@ import { ToFavlistService } from '../shared/to-favlist.service';
 
 })
 export class ProductsComponent implements OnInit {
+  search='';
+  
+ 
   products: Products[];
-  favprods: favProducts[];
   product:Products;
 
   filtered: Object[];
@@ -26,23 +29,14 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productsService: FirestoreService,
     private tofavlistSrvice: ToFavlistService,
-    private tocardSrvice: ToCardService) { }
+    private tocardService: ToCardService) { }
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(products => {
-      console.log(products);
-      this.products = products;
-
-    
+      
+      this.products = products; 
     });
-
-
-
-    this.tofavlistSrvice.getFavProd().subscribe(favprod=>{
-      console.log(favprod);
-      this.favprods = favprod;
-    })
-    
+   
   }
 
   onSubmit(value) {
@@ -80,13 +74,15 @@ export class ProductsComponent implements OnInit {
   }
 
   
-  addFavProds(event, product: Products){
-    this.tofavlistSrvice.addFavProd(product);
+  addFavProds(index){
+    this.tofavlistSrvice.addFavProd(this.products[index]);
   }  
 
-  addCardProds(event, product: Products){
-    this.tocardSrvice.addCardProd(product);
+  addCardProds(index){
+    this.tocardService.addCardProd(this.products[index]);
   }  
+
+  
 
   
     

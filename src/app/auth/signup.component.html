@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <mat-form-field  class="col-lg-12">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput formControlName="password" placeholder="Enter the password">
+                        <input type="password" matInput formControlName="password" placeholder="Enter the password (at least 6 characters)">
                         <mat-error *ngIf="signUpForm.hasError('required')">
                           Password is <strong>required</strong>
                         </mat-error>
@@ -28,12 +28,12 @@
                 </div>
                 <div class="col-lg-12 text-center">
                     <button mat-button class="btn btn-primary" 
-                    type="submit" [disabled]="signUpForm.invalid">Login</button>
+                    type="submit" [disabled]="signUpForm.invalid">Registration</button>
                 </div> 
                 <div class="col-lg-12 text-center">
                   <ul class="navbar-nav">
                     <li class="nav-item" routerLinkActive="accent" >
-                      <a mat-button class="nav-link" routerLink='/sign-up' style="color:blue;">Don't have account</a>
+                      <a mat-button class="nav-link" routerLink='/auth' style="color:blue;">Already have account</a>
                     </li>
                   </ul>   
               </div> 

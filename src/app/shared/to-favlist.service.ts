@@ -9,36 +9,36 @@ import { Products } from '../products';
   providedIn: 'root'
 })
 export class ToFavlistService {
-  favprodCollection: AngularFirestoreCollection<favProducts>;
-  favproducts: Observable<favProducts[]>;
-  favprodDoc: AngularFirestoreDocument<favProducts>;
+  i:number;
 
-  productDoc: AngularFirestoreDocument<Products>;
+  constructor() {
 
-  constructor(public afs: AngularFirestore) {
-    this.favprodCollection = this.afs.collection('favprods');
-
-    this.favproducts = this.favprodCollection.snapshotChanges().pipe(map(changes => {
-    return changes.map(a =>{
-        const data = a.payload.doc.data() as favProducts;
-        data.id = a.payload.doc.id;
-        return data;
-    });
-   }));
    }
 
    getFavProd(){
-    return this.favproducts;
+    let a = JSON.parse(localStorage.getItem('favProd'));
+    return a;
   }
 
-  addFavProd(product: Products){
-    this.productDoc = this.afs.doc(`records/${product.id}`);
-    this.favprodCollection.add(product);
+  addFavProd(product:Products){
+    let a: Products[];
     
+    a = JSON.parse(localStorage.getItem('favProd')) || [];
+
+    a.push(product);
+    setTimeout(() => {
+      localStorage.setItem('favProd', JSON.stringify(a));
+    }, 500);
+
    }
 
-   deleteFavProduct(favprod: favProducts){
-    this.favprodDoc = this.afs.doc(`favprods/${favprod.id}`);
-    this.favprodDoc.delete();
+   deleteFavProduct(index){
+    let a = JSON.parse(localStorage.getItem('favProd')) || [];
+    
+      if(a[this.i] == index){
+        a.splice(this.i,1);
+      }
+    
+    localStorage.setItem('favProd', JSON.stringify(a));
    }
 }

@@ -1,21 +1,15 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-4">
-        <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
             <div class="input-group">
                 <div class="form-group">
                     <input type="text"
-                    ngModel
-                    name="reg"
-                    #reg="ngModel"
+                    [(ngModel)]="search"
                     placeholder="Select the name"
                     class="form-control">
                 </div>
-                <div>
-                    <button mat-button type="submit"><mat-icon>search</mat-icon></button>
-                </div>
             </div>
-        </form>
+        
     </div>
     <div class="col-lg-4 offset-lg-4">
         <mat-form-field >
@@ -26,43 +20,40 @@
           </mat-form-field>  
     </div>
 </div>
-    <div *ngIf="resHide">
-        <ng-template #noItems>
-            <h5>There are no records to list</h5>
-        </ng-template>
-        <span *ngIf="filtered?.length > 0; else noItems"></span>
+        <div *ngIf=" search">
+            <mat-grid-list cols="3" rowHeight="405px" gutterSize="20px">
+                <mat-grid-tile [i]="i" *ngFor="let prods of products | filter: search; let i = index" class="my-grid-tile">
+                    <div class="box list-group-item clearfix">
+                        <span >
+                            <img 
+                                [src]="prods.imgPath" 
+                                alt="{{prods.name}}"
+                                class="img-fluid rounded mx-auto d-block img-thumbnail"
+                                > 
+                            </span>
+                            <p class="list-group-item-heading">Name: {{prods.name}} </p>
+                            <p class="list-group-item-text">Description: {{prods.description}}</p>
+                            <p class="list-group-item-text">Price: {{prods.price}}</p>
+                            <hr>
+                            <div style="text-align: left; position: relative;">
+                                <button mat-icon-button (click)="addFavProds($event, prods)" >
+                                     <mat-icon>grade</mat-icon>
+                                </button>
+                                
+                                <button mat-icon-button (click)="addCardProds($event, prods)"
+                                 style="position: absolute; right: 0;">
+                                    <mat-icon>shopping_cart</mat-icon>
+                               </button>
+                                
+                            </div>  
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list> 
+        </div>
         
-        <mat-grid-list cols="3" rowHeight="405px" gutterSize="20px">
-            <mat-grid-tile [i]="i" *ngFor="let prods of filtered; let i = index" class="my-grid-tile">
-                <div class="box list-group-item clearfix">
-                    <span >
-                        <img 
-                            [src]="prods.imgPath" 
-                            alt="{{prods.name}}"
-                            class="img-fluid rounded mx-auto d-block img-thumbnail"
-                            > 
-                        </span>
-                        <p class="list-group-item-heading">Name: {{prods.name}} </p>
-                        <p class="list-group-item-text">Description: {{prods.description}}</p>
-                        <p class="list-group-item-text">Price: {{prods.price}}</p>
-                        <hr>
-                        <div style="text-align: left; position: relative;">
-                            <button mat-icon-button (click)="addFavProds($event, prods)" >
-                                 <mat-icon>grade</mat-icon>
-                            </button>
-                            
-                            <button mat-icon-button (click)="addCardProds($event, prods)"
-                             style="position: absolute; right: 0;">
-                                <mat-icon>shopping_cart</mat-icon>
-                           </button>
-                            
-                        </div>  
-                </div>
-            </mat-grid-tile>
-        </mat-grid-list> 
     </div>
     
-    </div>
+    
 
 <hr>
 
@@ -81,11 +72,11 @@
                 <p class="list-group-item-text">Price: {{prods.price}}</p>
                 <hr>
                 <div style="text-align: left; position: relative;">
-                    <button mat-icon-button (click)="addFavProds($event, prods)" >
+                    <button mat-icon-button (click)="addFavProds(i, prods)" >
                          <mat-icon>grade</mat-icon>
                     </button>
                     
-                    <button mat-icon-button (click)="addCardProds($event, prods)"
+                    <button mat-icon-button (click)="addCardProds(i, prods)"
                      style="position: absolute; right: 0;">
                         <mat-icon>shopping_cart</mat-icon>
                    </button>

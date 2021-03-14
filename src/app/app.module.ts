@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,6 +31,7 @@ import { ToFavlistService } from './shared/to-favlist.service';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { FormComponent } from './form/form.component';
 import { AuthComponent } from './auth/auth.component';
+import { SignUp } from './auth/signup.component';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { AuthComponent } from './auth/auth.component';
     AdminProductComponent,
     FormComponent,
     AuthComponent,
+    SignUp,
    
   ],
   imports: [
@@ -53,6 +56,7 @@ import { AuthComponent } from './auth/auth.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,

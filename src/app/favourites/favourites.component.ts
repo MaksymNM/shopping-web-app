@@ -11,25 +11,24 @@ import { favProducts } from '../favprods';
   
 })
 export class FavouritesComponent implements OnInit{
-    products: Products[];
-    favprods: favProducts[];
+  a;  
+  i:number;
  
   constructor(private tofavlistSrvice: ToFavlistService) { 
   }
 
-  
-
   ngOnInit( ): void {
-    this.tofavlistSrvice.getFavProd().subscribe(favprod=>{
-        console.log(favprod);
-        this.favprods = favprod;
-      })
+    this.a = this.tofavlistSrvice.getFavProd();
       }
     
     
-      delFavProd(event, favprod:favProducts){
-   
-        this.tofavlistSrvice.deleteFavProduct(favprod);
+  delFavProd(index){
+    if(this.a[this.i] == index){
+      this.a.splice(this.i,1);
+    }
+  
+
+  this.tofavlistSrvice.deleteFavProduct(index);
       }
     
     

@@ -26,14 +26,11 @@ export class FirestoreService {
         const data = a.payload.doc.data() as Products;
         data.id = a.payload.doc.id;
         return data;
+        
       });
-    }));
-
-    
+    })); 
    }
-
    
-
    addProdForm: FormGroup  = new FormGroup({
      "id":new FormControl(null),
     "name": new FormControl("", Validators.required),

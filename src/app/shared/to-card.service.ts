@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Card } from '../card';
 import { Products } from '../products';
@@ -8,38 +8,43 @@ import { Products } from '../products';
 @Injectable({
   providedIn: 'root'
 })
-export class ToCardService {
-  cardCollection: AngularFirestoreCollection<Card>;
-  card: Observable<Card[]>;
-  cardDoc: AngularFirestoreDocument<Card>;
+export class ToCardService implements OnInit{
+  i:number;
 
-  productDoc: AngularFirestoreDocument<Products>;
-
-  constructor(public afs: AngularFirestore) { 
-    this.cardCollection = this.afs.collection('card');
-
-    this.card = this.cardCollection.snapshotChanges().pipe(map(changes => {
-      return changes.map(a =>{
-          const data = a.payload.doc.data() as Card;
-          data.id = a.payload.doc.id;
-          return data;
-      });
-     }));
+  constructor() { 
   }
 
-  getCardProds(){
-    return this.card;
-  }
-
-  addCardProd(product: Products){
-    this.productDoc = this.afs.doc(`records/${product.id}`);
-    this.cardCollection.add(product);
+  ngOnInit(){
     
-   }
+  }
 
-  deleteCardProduct(card: Card){
-    this.cardDoc = this.afs.doc(`card/${card.id}`);
-    this.cardDoc.delete();
+ 
+  getCardProd(){
+   let a = JSON.parse(localStorage.getItem('cardProd'));
+    return a;
+  }
+
+  addCardProd(product:Products): void{
+    let a: Products[];
+    
+    a = JSON.parse(localStorage.getItem('cardProd')) || [];
+
+    a.push(product);
+    setTimeout(() => {
+      localStorage.setItem('cardProd', JSON.stringify(a));
+    }, 500);
+
+  }
+
+  deleteCardProduct(index){
+    let a = JSON.parse(localStorage.getItem('cardProd')) || [];
+    
+      if(a[this.i] == index){
+        a.splice(this.i,1);
+      }
+    
+    localStorage.setItem('cardProd', JSON.stringify(a));
+    
    }
 
 

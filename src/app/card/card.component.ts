@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Card } from '../card';
+import { Products } from '../products/products.model';
 import { ToCardService } from '../shared/to-card.service';
 
 @Component({
@@ -7,21 +8,26 @@ import { ToCardService } from '../shared/to-card.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
-  card: Card[];
-
-  constructor(private tocardService: ToCardService) { }
-
-  ngOnInit(): void {
-    this.tocardService.getCardProds().subscribe(favprod=>{
-      console.log(this.card);
-      this.card = favprod;
-    })
+export class CardComponent implements OnInit{
+  a;  
+  i:number;
+  constructor(private tocardService: ToCardService) { 
+    
   }
 
-  delCardProd(event, card:Card){
-   
-    this.tocardService.deleteCardProduct(card);
+  ngOnInit(): void {
+    this.a = this.tocardService.getCardProd();
+    
+  }
+
+  delCardProd(index): void{
+    
+      if(this.a[this.i] == index){
+        this.a.splice(this.i,1);
+      }
+    
+
+    this.tocardService.deleteCardProduct(index);
   }
 
 }
