@@ -5,6 +5,7 @@ import { Products } from '../models/products';
 import { ToCardService } from '../shared/to-card.service';
 import { ToFavlistService } from '../shared/to-favlist.service';
 import { Card } from '../models/card';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productsService: FirestoreService,
     private tofavlistSrvice: ToFavlistService,
-    private tocardService: ToCardService) { }
+    private tocardService: ToCardService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(products => {
@@ -76,10 +78,12 @@ export class ProductsComponent implements OnInit {
   
   addFavProds(index){
     this.tofavlistSrvice.addFavProd(this.products[index]);
+    this.toastr.success("The product was added to Favourites");
   }  
 
   addCardProds(index){
     this.tocardService.addCardProd(this.products[index]);
+    this.toastr.success("The product was added to Card");
   }  
 
   

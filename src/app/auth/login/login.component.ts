@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthServiceService,  AuthResponseData} from '../../shared/auth.service';
+import { ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   signUpForm: FormGroup;
 
-  constructor(private authService: AuthServiceService, private router: Router) { 
+  constructor(private authService: AuthServiceService, private router: Router,
+    private toastr: ToastrService) { 
     this.signUpForm = new FormGroup({
       "email": new FormControl('', [
         Validators.required,
@@ -61,6 +63,7 @@ export class LoginComponent implements OnInit {
     );
    
     this.signUpForm.reset();
+    this.toastr.success("Successfull login");
   }
 
 }

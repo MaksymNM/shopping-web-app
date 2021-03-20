@@ -11,6 +11,7 @@ import { CardComponent } from './card/card.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule } from 'ngx-toastr';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -57,7 +58,8 @@ import { LoginComponent} from './auth/login/login.component';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-
+    
+    ToastrModule.forRoot({positionClass: 'toast-top-center'  ,timeOut:1000}),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,

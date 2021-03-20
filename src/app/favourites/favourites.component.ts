@@ -3,6 +3,7 @@ import { Products } from '../products/products.model';
 import { Observable, of, Subscription } from 'rxjs';
 import { ToFavlistService } from '../shared/to-favlist.service';
 import { favProducts } from '../models/favprods';
+import {ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-favourites',
@@ -14,7 +15,8 @@ export class FavouritesComponent implements OnInit{
   a;  
   i:number;
  
-  constructor(private tofavlistSrvice: ToFavlistService) { 
+  constructor(private tofavlistSrvice: ToFavlistService,
+    private toastr: ToastrService) { 
   }
 
   ngOnInit( ): void {
@@ -29,6 +31,7 @@ export class FavouritesComponent implements OnInit{
   
 
   this.tofavlistSrvice.deleteFavProduct(index);
+  this.toastr.error("The product was deleted");
       }
     
     

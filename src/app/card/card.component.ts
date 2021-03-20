@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Card } from '../models/card';
 import { Products } from '../products/products.model';
 import { ToCardService } from '../shared/to-card.service';
+import {ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-card',
@@ -11,7 +12,8 @@ import { ToCardService } from '../shared/to-card.service';
 export class CardComponent implements OnInit{
   a;  
   i:number;
-  constructor(private tocardService: ToCardService) { 
+  constructor(private tocardService: ToCardService,
+    private toastr: ToastrService) { 
     
   }
 
@@ -28,6 +30,7 @@ export class CardComponent implements OnInit{
     
 
     this.tocardService.deleteCardProduct(index);
+    this.toastr.error("The product was deleted");
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FirestoreService } from '../../shared/firestore.service';
 import { Products } from '../../models/products';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-form',
@@ -21,7 +22,8 @@ export class FormComponent implements OnInit {
   }
   
   constructor(private service: FirestoreService,
-    public dialogRef: MatDialogRef<FormComponent>) { }
+    public dialogRef: MatDialogRef<FormComponent>,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.service.getProducts().subscribe(products =>{
@@ -44,12 +46,14 @@ export class FormComponent implements OnInit {
   onSubmit(){
     if(!this.service.addProdForm.get('id').value){
       this.service.addProduct(this.service.addProdForm.value);
-
+      this.onClose();
+      this.toastr.success("New product was added")
     }
     else {
       this.service.updateProduct(this.service.addProdForm.value);
       this.service.addProdForm.reset();
       this.onClose();
+      this.toastr.warning("The product was changed")
     }
     
 

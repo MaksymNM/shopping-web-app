@@ -4,6 +4,7 @@ import { FirestoreService } from '../shared/firestore.service';
 import { Products } from '../models/products';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import { FormComponent } from '../modals/form/form.component';
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -25,7 +26,8 @@ export class AdminProductComponent implements OnInit {
   
 
   constructor(private productsService: FirestoreService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private toastr: ToastrService) {
       
    
    }
@@ -44,6 +46,7 @@ export class AdminProductComponent implements OnInit {
   delProd(event, product:Products){
    
     this.productsService.deleteProduct(product);
+    this.toastr.error("The product was deleted");
   }
 
   editProd(row){
