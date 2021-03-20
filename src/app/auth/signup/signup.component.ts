@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthServiceService,  AuthResponseData} from './auth.service';
+import { AuthServiceService,  AuthResponseData} from '../../shared/auth.service';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  selector: 'signup-app',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class AuthComponent implements OnInit {
+export class SignUp implements OnInit {
   isLoginMode = true;
   error: string= null;
 
@@ -29,9 +29,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSwitchMode(){
-    this.isLoginMode = !this.isLoginMode;
-  }
+
 
   onSubmit(){
     if(this.signUpForm.invalid){
@@ -42,11 +40,8 @@ export class AuthComponent implements OnInit {
 
     let authObs: Observable<AuthResponseData>
 
-    
-      authObs= this.authService.login(email, password);
-    
-      
-    
+    authObs=this.authService.signup(email, password);
+   
 
     authObs.subscribe(resData =>{
       console.log(resData);

@@ -2,8 +2,8 @@ import { Injectable, Input, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Card } from '../card';
-import { Products } from '../products';
+import { Card } from '../models/card';
+import { Products } from '../models/products';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +40,7 @@ export class ToCardService implements OnInit{
     let a = JSON.parse(localStorage.getItem('cardProd')) || [];
     
       if(a[this.i] == index){
-        a.splice(this.i,1);
+        a.splice(this.i, 1);
       }
     
     localStorage.setItem('cardProd', JSON.stringify(a));

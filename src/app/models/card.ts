@@ -1,5 +1,5 @@
-export interface Products {
-    id?: string;
+export interface Card {
+    'id': string;
     name?: string;
     description?: string;
     price?: number;

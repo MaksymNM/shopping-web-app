@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FirestoreService } from '../shared/firestore.service';
-import { Products } from '../products';
+import { FirestoreService } from '../../shared/firestore.service';
+import { Products } from '../../models/products';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
   
 
   productAdd: Products = {
+    id:'',
     name: '',
     description: '',
     price: 0,

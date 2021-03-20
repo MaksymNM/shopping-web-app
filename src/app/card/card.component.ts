@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
-import { Card } from '../card';
+import { Card } from '../models/card';
 import { Products } from '../products/products.model';
 import { ToCardService } from '../shared/to-card.service';
 
@@ -23,7 +23,7 @@ export class CardComponent implements OnInit{
   delCardProd(index): void{
     
       if(this.a[this.i] == index){
-        this.a.splice(this.i,1);
+        this.a.splice(this.i, 1);
       }
     
 

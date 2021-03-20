@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AdminProductComponent } from "./admin-product/admin-product.component";
-import { AuthComponent } from "./auth/auth.component";
-import { SignUp } from "./auth/signup.component";
+import { LoginComponent } from "./auth/login/login.component";
+import { SignUp } from "./auth/signup/signup.component";
 import { CardComponent } from "./card/card.component";
 import { FavouritesComponent } from "./favourites/favourites.component";
 import { ProductsComponent } from "./products/products.component";
@@ -32,7 +32,7 @@ const appRoutes: Routes = [
 },
 {
     path: 'auth',
-    component: AuthComponent
+    component: LoginComponent
 },
 {
     path: 'sign-up',

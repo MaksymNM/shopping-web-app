@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Products } from '../products/products.model';
 import { Observable, of, Subscription } from 'rxjs';
 import { ToFavlistService } from '../shared/to-favlist.service';
-import { favProducts } from '../favprods';
+import { favProducts } from '../models/favprods';
 
 @Component({
   selector: 'app-favourites',

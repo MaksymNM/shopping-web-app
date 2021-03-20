@@ -3,8 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable} from 'rxjs';
 import { map} from 'rxjs/operators';
-import { favProducts } from '../favprods';
-import { Products } from '../products';
+import { favProducts } from '../models/favprods';
+import { Products } from '../models/products';
 import * as _ from 'lodash';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthServiceService } from '../auth/auth.service'
+import { AuthServiceService } from '../shared/auth.service'
 import { UserModel } from '../auth/user.model';
 
 @Component({

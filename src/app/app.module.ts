@@ -29,9 +29,9 @@ import { FirestoreService } from './shared/firestore.service';
 import { AdminProductComponent } from './admin-product/admin-product.component';
 import { ToFavlistService } from './shared/to-favlist.service';
 import { FavouritesComponent } from './favourites/favourites.component';
-import { FormComponent } from './form/form.component';
-import { AuthComponent } from './auth/auth.component';
-import { SignUp } from './auth/signup.component';
+import { FormComponent } from './modals/form/form.component';
+import { SignUp } from './auth/signup/signup.component';
+import { LoginComponent} from './auth/login/login.component';
 
 
 @NgModule({
@@ -43,7 +43,7 @@ import { SignUp } from './auth/signup.component';
     FavouritesComponent,
     AdminProductComponent,
     FormComponent,
-    AuthComponent,
+    LoginComponent,
     SignUp,
    
   ],

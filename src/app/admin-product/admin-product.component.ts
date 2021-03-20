@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from '../shared/firestore.service';
-import { Products } from '../products';
+import { Products } from '../models/products';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
-import { FormComponent } from '../form/form.component';
+import { FormComponent } from '../modals/form/form.component';
 
 
 

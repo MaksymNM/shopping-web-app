@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { favProducts } from '../favprods';
+import { favProducts } from '../models/favprods';
 import { FirestoreService } from '../shared/firestore.service';
-import { Products } from '../products';
+import { Products } from '../models/products';
 import { ToCardService } from '../shared/to-card.service';
 import { ToFavlistService } from '../shared/to-favlist.service';
-import { Card } from '../card';
+import { Card } from '../models/card';
 
 
 @Component({
