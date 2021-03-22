@@ -12,6 +12,7 @@
 .header{
     background-color: rgb(243, 243, 243);
     border: 1px solid dimgray;
+    height: 80px;
     
 }
 .example-spacer {
@@ -63,4 +64,9 @@ hr{
     width: 73%;
     height: 1px;
     background-color: darkgray;
+}
+
+.img-thumbnail{
+    max-width: 65px;
+    height: auto;
 }

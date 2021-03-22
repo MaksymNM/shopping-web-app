@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthServiceService } from '../shared/auth.service'
-import { UserModel } from '../auth/user.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
+
+
 
 @Component({
   selector: 'app-header',
@@ -9,26 +11,23 @@ import { UserModel } from '../auth/user.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isAuth = false;
-  user = '';
-  private userSub: Subscription;
  
-
-  constructor(private authService: AuthServiceService) { }
+  constructor(
+    private router: Router,
+    private auth: AngularFireAuth,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
-   this.userSub =  this.authService.user.subscribe(user => {
-      this.isAuth = !user ? false : true;
-      this.user = user.email;
-   });
-   
+ 
   }
 
-  // ngOnDestroy(): void {
-  //   this.userSub.unsubscribe();
-  // }
-
-  onExit(){
-    this.isAuth = false;
+  getService(){
+    return this.authService;
   }
+
+  onLogout(){
+    this.authService.SingOut();
+  }
+
+
 }

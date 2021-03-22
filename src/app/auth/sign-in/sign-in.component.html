@@ -1,18 +1,16 @@
 <div class="container auth">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="alert alert-danger" *ngIf="error">
-                <p> {{ error }}</p>
-            </div>
-            <form  [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            
+            <form  [formGroup]="signInForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <mat-form-field class="col-lg-12">
                         <mat-label>Email</mat-label>
                         <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
-                        <mat-error *ngIf="signUpForm.hasError('email') && !signUpForm.hasError('required')">
+                        <mat-error *ngIf="signInForm.hasError('email') && !signInForm.hasError('required')">
                           Please enter a valid email address
                         </mat-error>
-                        <mat-error *ngIf="signUpForm.hasError('required')">
+                        <mat-error *ngIf="signInForm.hasError('required')">
                           Email is <strong>required</strong>
                         </mat-error>
                       </mat-form-field>
@@ -21,23 +19,32 @@
                     <mat-form-field  class="col-lg-12">
                         <mat-label>Password</mat-label>
                         <input type="password" matInput formControlName="password" placeholder="Enter the password">
-                        <mat-error *ngIf="signUpForm.hasError('required')">
+                        <mat-error *ngIf="signInForm.hasError('required')">
                           Password is <strong>required</strong>
                         </mat-error>
                       </mat-form-field>
                 </div>
                 <div class="col-lg-12 text-center">
-                    <button mat-button class="btn btn-primary" 
-                    type="submit" [disabled]="signUpForm.invalid">Login</button>
+                    <button mat-button class="btn btn-primary " 
+                    type="submit" [disabled]="signInForm.invalid">Sign In</button>
                 </div> 
                 <div class="col-lg-12 text-center">
                   <ul class="navbar-nav">
                     <li class="nav-item" routerLinkActive="accent" >
-                      <a mat-button class="nav-link" routerLink='/sign-up' style="color:blue;">Don't have account</a>
+                      <a mat-button class="nav-link" routerLink='/signup' style="color:blue;"><i>Don't have account</i></a>
                     </li>
                   </ul>   
+              </div> 
+              <div class="col-lg-12 text-center">
+                <button mat-button class="btn btn-primary" 
+                type="button" (click)="getService().GoogleAuth()">Sign In with Google</button>
+              </div> 
+              <div class="col-lg-12 text-center">
+                <button mat-button class="btn btn-primary" 
+                type="button" (click)="getService().FacebookAuth()">Sign In with Facebook</button>
               </div> 
             </form>
         </div>
     </div>
 </div>
+

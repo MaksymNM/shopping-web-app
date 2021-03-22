@@ -31,8 +31,14 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
 import { ToFavlistService } from './shared/to-favlist.service';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { FormComponent } from './modals/form/form.component';
-import { SignUp } from './auth/signup/signup.component';
-import { LoginComponent} from './auth/login/login.component';
+// import { LoginComponent } from './auth/login/login.component';
+// import { SignUp } from './auth/signup/signup.component';
+import {  MatFormFieldModule } from '@angular/material/form-field';
+import { AuthService } from './shared/auth.service';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 
 @NgModule({
@@ -44,8 +50,13 @@ import { LoginComponent} from './auth/login/login.component';
     FavouritesComponent,
     AdminProductComponent,
     FormComponent,
-    LoginComponent,
-    SignUp,
+    SignInComponent,
+    SignUpComponent,
+    FooterComponent,
+    // LoginComponent,
+    // SignUp,
+    
+  
    
   ],
   imports: [
@@ -59,6 +70,7 @@ import { LoginComponent} from './auth/login/login.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     
+    
     ToastrModule.forRoot({positionClass: 'toast-top-center'  ,timeOut:1000}),
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -70,8 +82,10 @@ import { LoginComponent} from './auth/login/login.component';
     MatToolbarModule,
     MatSelectModule,
     MatInputModule,
+    MatFormFieldModule,
+    
   ],
-  providers: [FirestoreService, ToFavlistService],
+  providers: [FirestoreService, ToFavlistService, AuthService],
   bootstrap: [AppComponent],
   entryComponents:[FormComponent]
 })

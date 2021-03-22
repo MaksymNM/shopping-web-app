@@ -1,0 +1,17 @@
+.auth{
+    margin-top: 30px;
+    background-color: rgb(243, 243, 243);
+    border: dimgray solid 2px;
+    border-radius: 5px;
+    width: 400px;
+}
+
+form{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn{
+    width: 200px;
+    margin: 5px 5px 5px 5px;
+}

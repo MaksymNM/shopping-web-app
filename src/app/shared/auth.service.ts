@@ -1,94 +1,117 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { Subject, throwError } from 'rxjs';
-import { UserModel } from '../auth/user.model';
-
-
-export interface AuthResponseData{
-  kind: string;
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId:string;
-  registered?:boolean;
-}
+import { Injectable, NgZone } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import firebase from 'firebase/app'; 
+import 'firebase/auth';
+import { ToastrService } from 'ngx-toastr';
+import { Users } from '../models/users';
 
 @Injectable({
   providedIn: 'root'
 })
+export class AuthService {
+  usersCollection: AngularFirestoreCollection<Users>;
 
-export class AuthServiceService {
-  user = new Subject<UserModel>();
 
-  constructor(private http: HttpClient) { }
+  userData: any;
 
-  signup(email: string, password:string){
-    return this.http.post<AuthResponseData>
-    ('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC7kWG3FQ7FXjNrV_ZVhP8bZkNKIMMzjh0',
-    {
-      email: email,
-      password: password,
-      returnSecureToken: true
-    }
-    ).pipe(catchError(this.handleError), tap(resData =>{
-      this.handleAuthentication(
-        resData.email, 
-        resData.localId, 
-        resData.idToken, 
-        +resData.expiresIn )
-    }));
-  }
+  constructor(private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private ngZone: NgZone,
+    private toastr: ToastrService) {
 
-  login(email:string, password:string){
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC7kWG3FQ7FXjNrV_ZVhP8bZkNKIMMzjh0',
-    {
-      email: email,
-      password: password,
-      returnSecureToken: true
-    }
-    ).pipe(catchError(this.handleError), tap(resData =>{
-      this.handleAuthentication(
-        resData.email, 
-        resData.localId, 
-        resData.idToken, 
-        +resData.expiresIn )
-    }));
-  }
+      this.usersCollection = this.afs.collection('users');
 
-  private handleAuthentication(email:string,
-     userId:string, 
-     token:string, 
-     expiresIn: number){
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-      const user = new UserModel(
-        email,
-        userId, 
-        token,
-        expirationDate
-        );
-        this.user.next(user);
-  }
-
-  private handleError(errorRes: HttpErrorResponse){
-    let errorMessage = 'An unknown error occured!';
-      if (!errorRes.error || !errorRes.error.error){
-        return throwError(errorMessage);
-      }
-      switch(errorRes.error.error.message){
-        case 'EMAIL_EXISTS':
-          errorMessage = 'This email exists already';
-          break;
-        case 'EMAIL_NOT_FOUND':
-          errorMessage = 'This email does not exists';
-          break;
-        case 'INVALID_PASSWORD':
-          errorMessage = 'This password is not correct';
-          break;
+      this.afAuth.authState.subscribe(user =>{
+        if(user){
+          this.userData = user;
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user'));
+        } else {
+          localStorage.setItem('user', null);
+          JSON.parse(localStorage.getItem('user'));
         }
-      return throwError(errorMessage);
-  
+      })
+
+     }
+
+     SignIn(email, password){
+       return this.afAuth.signInWithEmailAndPassword(email, password)
+       .then((result)=>{
+        
+         this.ngZone.run(()=>{
+           this.router.navigate(['']);
+         });
+       }).catch((error)=> {
+         window.alert(error.message)
+       })
+       
+     }
+
+
+    SignUp(email, password, surname, name){
+      return this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((result)=>{
+        this.usersCollection.add({
+          uid: result.user.uid,
+          email: result.user.email,
+          displayName: name,
+          surname: surname,
+          photoURL: result.user.photoURL
+        })
+        this.router.navigate(['']);
+      }).catch((error)=>{
+        console.log(error.message)
+      })
+   }
+
+     get isLoggedIn(): boolean {
+      const user = JSON.parse(localStorage.getItem('user'));
+      return (user !== null) ? true : false;
     }
-  
+
+    GoogleAuth(){
+      return this.AuthLogin(new firebase.auth.GoogleAuthProvider())
+      
+    }
+
+    FacebookAuth(){
+      return this.AuthLogin(new firebase.auth.FacebookAuthProvider());
+    }
+
+    AuthLogin(provider){
+      return this.afAuth.signInWithPopup(provider)
+      .then((result)=>{
+        this.toastr.success("You have successfully signed in");
+        this.ngZone.run(()=>{
+          this.router.navigate(['']);
+        })
+        this.SetUserData(result.user);
+      }).catch((error)=>{
+        console.log(error.message)
+      })
+    }
+
+     SetUserData(user){
+       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+       const userData: Users = {
+         uid: user.uid,
+         email: user.email,
+         displayName: user.displayName,
+         photoURL: user.photoURL,
+       }
+       return userRef.set(userData, {
+         merge: true
+       })
+     }
+
+     SingOut(){
+       return this.afAuth.signOut().then(()=>{
+         localStorage.removeItem('user');
+         window.location.reload()
+        
+       })
+     }
 }
