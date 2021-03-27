@@ -15,8 +15,6 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./admin-product.component.css']
 })
 
-
-
 export class AdminProductComponent implements OnInit {
   products: Products[];
   editState: boolean = false;
@@ -27,11 +25,7 @@ export class AdminProductComponent implements OnInit {
 
   constructor(private productsService: FirestoreService,
     private dialog: MatDialog,
-    private toastr: ToastrService) {
-      
-   
-   }
- 
+    private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(products =>{
@@ -44,7 +38,6 @@ export class AdminProductComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'price', 'imgPath', 'update', 'delete'];
   
   delProd(event, product:Products){
-   
     this.productsService.deleteProduct(product);
     this.toastr.error("The product was deleted");
   }
@@ -57,7 +50,6 @@ export class AdminProductComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "25%";
     this.dialog.open(FormComponent, dialogConfig);
-    
   }
 
   onAdd(){
@@ -74,9 +66,6 @@ export class AdminProductComponent implements OnInit {
     dialogConfig.width = "25%";
     this.dialog.open(FormComponent, dialogConfig);
   }
-
-
-  
 }
 
 

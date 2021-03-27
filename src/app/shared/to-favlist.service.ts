@@ -15,7 +15,7 @@ export class ToFavlistService {
 
    }
 
-   getFavProd(){
+  getFavProd(){
     let a = JSON.parse(localStorage.getItem('favProd'));
     return a;
   }
@@ -29,15 +29,14 @@ export class ToFavlistService {
     setTimeout(() => {
       localStorage.setItem('favProd', JSON.stringify(a));
     }, 500);
-
    }
 
-   deleteFavProduct(index){
+  deleteFavProduct(index){
     let a = JSON.parse(localStorage.getItem('favProd')) || [];
     
-      if(a[this.i] == index){
-        a.splice(this.i,1);
-      }
+    if(a[this.i] == index){
+      a.splice(this.i,1);
+    }
     
     localStorage.setItem('favProd', JSON.stringify(a));
    }

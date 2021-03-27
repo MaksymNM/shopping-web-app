@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { favProducts } from '../models/favprods';
 import { FirestoreService } from '../shared/firestore.service';
 import { Products } from '../models/products';
 import { ToCardService } from '../shared/to-card.service';
 import { ToFavlistService } from '../shared/to-favlist.service';
-import { Card } from '../models/card';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -35,10 +33,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(products => {
-      
       this.products = products; 
     });
-   
   }
 
   onSubmit(value) {
@@ -54,7 +50,6 @@ export class ProductsComponent implements OnInit {
       this.lastSortedByField = field;
       this.ascendingOrder = true;
     }
-
     if(this.ascendingOrder) {
       this.products = this.products.sort((a, b) => {
         if (a[field] < b[field])
@@ -72,7 +67,6 @@ export class ProductsComponent implements OnInit {
         return 0;
       });
     }
-
   }
 
   

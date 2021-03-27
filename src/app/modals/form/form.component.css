@@ -5,3 +5,16 @@
  mat-form-field{
      width: 100%;
  }
+
+form{
+    margin-top: 10px;
+}
+
+ mat-toolbar{
+     background-color: #FA9F16;
+     border-radius: 5px;
+ }
+
+ button{
+     background-color:#FA9F16 ;
+ }

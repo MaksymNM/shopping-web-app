@@ -1,42 +1,45 @@
 <div class="container">
   <div class="text-center">
     <button mat-stroked-button class="btn" type="button" (click)="onCreate()">
-      Create New Product
-  </button>
-  
-  </div>
-  
+      <span>Create New Product</span> 
+    </button>
+</div>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
       <mat-cell *matCellDef="let prods"> {{prods.name}} </mat-cell>
     </ng-container>
-  
+    
     <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
       <mat-cell *matCellDef="let prods"> {{prods.description}} </mat-cell>
     </ng-container>
   
     <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
       <mat-cell *matCellDef="let prods"> {{prods.price}} </mat-cell>
     </ng-container>
   
     <ng-container matColumnDef="imgPath">
+      <mat-header-cell *matHeaderCellDef>Img Url</mat-header-cell>
       <mat-cell *matCellDef="let prods"> {{prods.imgPath}} </mat-cell>
     </ng-container>
     
-    <ng-container matColumnDef="update">
-        
-        <mat-cell *matCellDef="let row" >
-             <button mat-button (click)="editProd(row)">Edit</button>
-        </mat-cell>
+    <ng-container matColumnDef="update" >
+      <mat-header-cell *matHeaderCellDef>Update</mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-button (click)="editProd(row)">Edit</button>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="delete">
-        
-        <mat-cell *matCellDef="let prods" >
-             <button mat-button (click)="delProd($event, prods)">Delete</button>
-        </mat-cell>
+      <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+      <mat-cell *matCellDef="let prods" >
+        <button mat-button (click)="delProd($event, prods)">Delete</button>
+      </mat-cell>
     </ng-container>
 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>

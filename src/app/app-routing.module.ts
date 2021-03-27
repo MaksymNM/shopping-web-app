@@ -36,16 +36,11 @@ const appRoutes: Routes = [
 {
     path: 'login',
     component: SignInComponent,
-    
-   
 },
 {
     path: 'signup',
     component: SignUpComponent
 }
-
-
-
 ];
 
 @NgModule({

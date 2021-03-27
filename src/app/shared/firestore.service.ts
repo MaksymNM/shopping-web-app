@@ -3,36 +3,31 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable} from 'rxjs';
 import { map} from 'rxjs/operators';
-import { favProducts } from '../models/favprods';
 import { Products } from '../models/products';
-import * as _ from 'lodash';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-  
 
   productsCollection: AngularFirestoreCollection<Products>;
   products: Observable<Products[]>;
   productDoc: AngularFirestoreDocument<Products>;
   
-
   constructor(public afs: AngularFirestore) {
     this.productsCollection = this.afs.collection('products');
-
     this.products = this.productsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
         const data = a.payload.doc.data() as Products;
         data.id = a.payload.doc.id;
         return data;
-        
       });
     })); 
    }
    
-   addProdForm: FormGroup  = new FormGroup({
-     "id":new FormControl(null),
+  addProdForm: FormGroup  = new FormGroup({
+    "id":new FormControl(null),
     "name": new FormControl("", Validators.required),
     "description": new FormControl("", Validators.required),
     "price" : new FormControl(0, Validators.required),
@@ -49,30 +44,26 @@ export class FirestoreService {
     });
   }
 
-   
+  getProducts(){
+    return this.products;
+  }
 
-   getProducts(){
-     return this.products;
-   }
-
-   addProduct(product:Products){
+  addProduct(product:Products){
     this.productsCollection.add(product);
-   }
+  }
 
-   deleteProduct(product:Products){
+  deleteProduct(product:Products){
     this.productDoc = this.afs.doc(`products/${product.id}`);
     this.productDoc.delete();
-   }
+  }
 
-   updateProduct(product:Products){
+  updateProduct(product:Products){
     this.productDoc = this.afs.doc(`products/${product.id}`);
     this.productDoc.update(product);
-   }
+  }
 
-   populateForm(product){
-     this.addProdForm.setValue(_.omit(product));
-   }
-
-   
-   
+  populateForm(product){
+    this.addProdForm.setValue(product);
+  }
+  
 }

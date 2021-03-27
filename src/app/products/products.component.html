@@ -1,6 +1,6 @@
 <div class="container">
-<div class="row">
-    <div class="col-lg-4">
+    <div class="row search">
+        <div class="col-lg-4">
             <div class="input-group">
                 <div class="form-group">
                     <input type="text"
@@ -9,82 +9,87 @@
                     class="form-control">
                 </div>
             </div>
-        
-    </div>
-    <div class="col-lg-4 offset-lg-4">
-        <mat-form-field >
-            <mat-label>Sort by</mat-label>
-            <mat-select [(value)]="selected">
-              <mat-option value="option1" (click)="sortByField('price')">Sort by price</mat-option>
-            </mat-select>
-          </mat-form-field>  
-    </div>
-</div>
-        <div *ngIf=" search">
-            <mat-grid-list cols="3" rowHeight="405px" gutterSize="20px">
-                <mat-grid-tile [i]="i" *ngFor="let prods of products | filter: search; let i = index" class="my-grid-tile">
-                    <div class="box list-group-item clearfix">
-                        <span >
-                            <img 
-                                [src]="prods.imgPath" 
-                                alt="{{prods.name}}"
-                                class="img-fluid rounded mx-auto d-block img-thumbnail"
-                                > 
-                            </span>
-                            <p class="list-group-item-heading">Name: {{prods.name}} </p>
-                            <p class="list-group-item-text">Description: {{prods.description}}</p>
-                            <p class="list-group-item-text">Price: {{prods.price}}</p>
-                            <hr>
-                            <div style="text-align: left; position: relative;">
-                                <button mat-icon-button (click)="addFavProds($event, prods)" >
-                                     <mat-icon>grade</mat-icon>
-                                </button>
-                                
-                                <button mat-icon-button (click)="addCardProds($event, prods)"
-                                 style="position: absolute; right: 0;">
-                                    <mat-icon>shopping_cart</mat-icon>
-                               </button>
-                                
-                            </div>  
-                    </div>
-                </mat-grid-tile>
-            </mat-grid-list> 
         </div>
-        
+        <div class="col-lg-4 offset-lg-4">
+            <mat-form-field >
+                <mat-label>Sort by</mat-label>
+                <mat-select [(value)]="selected">
+                <mat-option value="option1" (click)="sortByField('price')">Sort by price</mat-option>
+                </mat-select>
+            </mat-form-field>  
+        </div>
     </div>
-    
-    
-
-<hr>
-
-<mat-grid-list cols="3" rowHeight="405px" gutterSize="20px">
-    <mat-grid-tile [i]="i" *ngFor="let prods of products; let i = index" class="my-grid-tile">
-        <div class="box list-group-item clearfix">
-            <span >
-                <img 
+    <div *ngIf=" search">
+        <div class="row" >
+        <div class="col-lg-4" [i]="i" *ngFor="let prods of products | filter: search  let i = index">
+            <div class="box ">
+                <span>
+                    <img 
                     [src]="prods.imgPath" 
                     alt="{{prods.name}}"
-                    class="img-fluid rounded mx-auto d-block img-thumbnail"
-                    > 
+                    class="img-fluid mx-auto d-block"> 
                 </span>
-                <p class="list-group-item-heading">Name: {{prods.name}} </p>
-                <p class="list-group-item-text">Description: {{prods.description}}</p>
-                <p class="list-group-item-text">Price: {{prods.price}}</p>
-                <hr>
-                <div style="text-align: left; position: relative;">
-                    <button mat-icon-button (click)="addFavProds(i, prods)" >
-                         <mat-icon>grade</mat-icon>
-                    </button>
-                    
-                    <button mat-icon-button (click)="addCardProds(i, prods)"
-                     style="position: absolute; right: 0;">
-                        <mat-icon>shopping_cart</mat-icon>
-                   </button>
-                    
-                </div>  
+                <div class="text-center">
+                    <p ><strong>{{prods.name}}</strong></p>
+                    <p>{{prods.description}}</p>
+                    <hr>
+                </div>
+                <div class="footer">
+                    <span class="left">
+                        <p>&#8372; {{prods.price}}</p>
+                    </span>
+                    <span class="right">
+                        <button mat-icon-button (click)="addFavProds(i, prods)" >
+                            <mat-icon>grade</mat-icon>
+                       </button>
+                       <button mat-icon-button (click)="addCardProds(i, prods)">
+                          <mat-icon>shopping_cart</mat-icon>
+                     </button>
+                    </span>
+                </div>
+            </div>
         </div>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div> 
+    </div>   
+</div>
+<hr>
+
+<div class="container">
+    <div class="row content" >
+        <div class="col-lg-4" [i]="i" *ngFor="let prods of products  let i = index">
+            <div class="box ">
+                <span>
+                    <img 
+                    [src]="prods.imgPath" 
+                    alt="{{prods.name}}"
+                    class="img-fluid mx-auto d-block"> 
+                </span>
+                <div class="text-center">
+                    <p ><strong>{{prods.name}}</strong></p>
+                    <p>{{prods.description}}</p>
+                    <hr>
+                </div>
+                <div class="footer">
+                    <span class="left">
+                        <p>&#8372; {{prods.price}}</p>
+                    </span>
+                    <span class="right">
+                        <button mat-icon-button (click)="addFavProds(i, prods)" >
+                            <mat-icon>grade</mat-icon>
+                       </button>
+                       <button mat-icon-button (click)="addCardProds(i, prods)">
+                          <mat-icon>shopping_cart</mat-icon>
+                     </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 

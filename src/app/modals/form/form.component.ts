@@ -27,7 +27,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getProducts().subscribe(products =>{
-      
       this.products = products;
     });
     
@@ -55,8 +54,6 @@ export class FormComponent implements OnInit {
       this.onClose();
       this.toastr.warning("The product was changed")
     }
-    
-
   }
 
   

@@ -1,23 +1,29 @@
-<mat-grid-list cols="3" rowHeight="405px" gutterSize="20px">
-    <mat-grid-tile [i]="index" *ngFor="let cardprod of a; let index = index" class="my-grid-tile">
-        <div class="box list-group-item clearfix">
-            <span >
-                <img 
+<div class="container">
+    <div class="row content" >
+        <div class="col-lg-4" [i]="index" *ngFor="let cardprod of a; let index = index">
+            <div class="box ">
+                <span>
+                    <img 
                     [src]="cardprod.imgPath" 
                     alt="{{cardprod.name}}"
-                    class="img-fluid rounded mx-auto d-block img-thumbnail"
-                    > 
+                    class="img-fluid mx-auto d-block"> 
                 </span>
-                <p class="list-group-item-heading">Name: {{cardprod.name}} </p>
-                <p class="list-group-item-text">Description: {{cardprod.description}}</p>
-                <p class="list-group-item-text">Price: {{cardprod.price}}</p>
-                <hr>
                 <div class="text-center">
-                    <button mat-icon-button  aria-label="Example icon button with a home icon" (click)="delCardProd(cardprod.index)">
-                        <mat-icon>delete</mat-icon>
-                      </button>
-                    
-                </div>  
+                    <p ><strong>{{cardprod.name}}</strong></p>
+                    <p>{{cardprod.description}}</p>
+                    <hr>
+                </div>
+                <div class="footer">
+                    <span class="left">
+                        <p>&#8372; {{cardprod.price}}</p>
+                    </span>
+                    <span class="right">
+                        <button mat-icon-button  aria-label="Example icon button with a home icon" (click)="delCardProd(cardprod.index)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </span>
+                </div>
+            </div>
         </div>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div>    
+</div>

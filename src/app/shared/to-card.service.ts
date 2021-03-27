@@ -18,7 +18,6 @@ export class ToCardService implements OnInit{
     
   }
 
- 
   getCardProd(){
    let a = JSON.parse(localStorage.getItem('cardProd'));
     return a;
@@ -39,13 +38,10 @@ export class ToCardService implements OnInit{
   deleteCardProduct(index){
     let a = JSON.parse(localStorage.getItem('cardProd')) || [];
     
-      if(a[this.i] == index){
-        a.splice(this.i, 1);
-      }
+    if(a[this.i] == index){
+      a.splice(this.i, 1);
+    }
     
     localStorage.setItem('cardProd', JSON.stringify(a));
-    
    }
-
-
 }

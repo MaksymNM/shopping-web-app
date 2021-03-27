@@ -14,23 +14,17 @@ export class CardComponent implements OnInit{
   i:number;
   constructor(private tocardService: ToCardService,
     private toastr: ToastrService) { 
-    
   }
 
   ngOnInit(): void {
     this.a = this.tocardService.getCardProd();
-    
   }
 
   delCardProd(index): void{
-    
       if(this.a[this.i] == index){
         this.a.splice(this.i, 1);
       }
-    
-
     this.tocardService.deleteCardProduct(index);
     this.toastr.error("The product was deleted");
   }
-
 }

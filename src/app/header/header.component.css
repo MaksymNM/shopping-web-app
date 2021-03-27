@@ -2,15 +2,19 @@
     margin: 0;
     padding: 0;
 }
+
 .accent {
-    color: dimgray;
-    background-color: lightgray;
-    border: dimgray solid 2px;
-    border-radius: 4px;
-  } 
+    color: lightgray;
+    text-shadow:black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
+
+} 
+
+.menu{
+    margin-left: 30px;
+}
 
 .header{
-    background-color: rgb(243, 243, 243);
+    background-color: #FA9F16;
     border: 1px solid dimgray;
     height: 80px;
     
@@ -19,37 +23,32 @@
     flex: 1 1 auto;
   }
 
-.f_row{
-    margin-top: 5px;
-    border: 1px solid black;
+.logo:hover{
+    color: lightgray;
 }
 
-h2{
-    vertical-align: middle;
-    margin: 0;
-    
-}
 .logo{
-    text-decoration: 0;
+    font-size: 24px;
+    text-shadow:black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
+    text-decoration: none;
+    color: lightgray;
+}
+
+.icon{
+    margin-top: 12px;
+}
+
+.nav-link{
+    vertical-align: middle;
+}
+
+a{  
+    font-size: 16px;
+    width: 100px;
+}
+
+a:hover{
     color: black;
-}
-
-
-h4{
-    vertical-align: bottom;
-}
-
-.nav-links{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-a{
-    margin-right: 20px;
-    margin-left: 20px;
-    width: 200px;
-    color: dimgray;
-  
 }
 
 .s_row{

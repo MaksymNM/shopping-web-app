@@ -1,8 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Products } from '../products/products.model';
-import { Observable, of, Subscription } from 'rxjs';
 import { ToFavlistService } from '../shared/to-favlist.service';
-import { favProducts } from '../models/favprods';
 import {ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -21,22 +18,16 @@ export class FavouritesComponent implements OnInit{
 
   ngOnInit( ): void {
     this.a = this.tofavlistSrvice.getFavProd();
-      }
+  }
     
     
   delFavProd(index){
     if(this.a[this.i] == index){
       this.a.splice(this.i,1);
     }
-  
-
-  this.tofavlistSrvice.deleteFavProduct(index);
-  this.toastr.error("The product was deleted");
-      }
-    
-    
-
-    
+    this.tofavlistSrvice.deleteFavProduct(index);
+    this.toastr.error("The product was deleted");
+  } 
   }
 
  
