@@ -10,7 +10,7 @@ import { Products } from '../models/products';
 })
 export class ToCardService implements OnInit{
   i:number;
-
+  countBadge:number;
   constructor() { 
   }
 
@@ -31,7 +31,8 @@ export class ToCardService implements OnInit{
     a.push(product);
     setTimeout(() => {
       localStorage.setItem('cardProd', JSON.stringify(a));
-    }, 500);
+      this.countBadge = a.length;
+    }, 200);
 
   }
 
@@ -43,5 +44,6 @@ export class ToCardService implements OnInit{
     }
     
     localStorage.setItem('cardProd', JSON.stringify(a));
+    this.countBadge = a.length;
    }
 }

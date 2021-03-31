@@ -10,9 +10,10 @@ import { Products } from '../models/products';
 })
 export class ToFavlistService {
   i:number;
+  countBadge:number;
 
   constructor() {
-
+    
    }
 
   getFavProd(){
@@ -20,16 +21,22 @@ export class ToFavlistService {
     return a;
   }
 
+ 
+
   addFavProd(product:Products){
     let a: Products[];
     
     a = JSON.parse(localStorage.getItem('favProd')) || [];
-
     a.push(product);
     setTimeout(() => {
       localStorage.setItem('favProd', JSON.stringify(a));
-    }, 500);
+      this.countBadge = a.length;
+      
+    }, 200);
+    
+    
    }
+
 
   deleteFavProduct(index){
     let a = JSON.parse(localStorage.getItem('favProd')) || [];
@@ -39,5 +46,7 @@ export class ToFavlistService {
     }
     
     localStorage.setItem('favProd', JSON.stringify(a));
+    this.countBadge = a.length;
+    
    }
 }

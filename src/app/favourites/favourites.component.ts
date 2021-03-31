@@ -10,6 +10,7 @@ import {ToastrService } from 'ngx-toastr';
 })
 export class FavouritesComponent implements OnInit{
   a;  
+  
   i:number;
  
   constructor(private tofavlistSrvice: ToFavlistService,
@@ -18,6 +19,7 @@ export class FavouritesComponent implements OnInit{
 
   ngOnInit( ): void {
     this.a = this.tofavlistSrvice.getFavProd();
+   
   }
     
     
