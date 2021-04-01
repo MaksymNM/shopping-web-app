@@ -1,12 +1,13 @@
-<mat-toolbar>
-  <span>Sign Up</span>
-  <span class="spacer"></span>
+<div class="text-right">
   <button mat-button class="btn-dialog-close" mat-button (click)="onClose()" type="button" tabindex="-1"><mat-icon>highlight_off</mat-icon></button>
-</mat-toolbar>
+</div>
+<div class="text-center">
+  <span style="font-size: 24px;">Register</span>
+</div>
 
       <form  [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <mat-form-field  class="col-lg-12">
+          <mat-form-field  class="col-lg-12" style="margin-bottom: -1.25em" appearance="outline">
             <mat-label>Name</mat-label>
               <input type="text" matInput formControlName="name" placeholder="Enter your name">
                 <mat-error *ngIf="signUpForm.hasError('required')">
@@ -15,7 +16,7 @@
           </mat-form-field>
         </div>
         <div class="form-group">
-          <mat-form-field  class="col-lg-12">
+          <mat-form-field  class="col-lg-12" style="margin-bottom: -1.25em" appearance="outline">
             <mat-label>Surname</mat-label>
               <input type="text" matInput formControlName="surname" placeholder="Enter your surname">
                 <mat-error *ngIf="signUpForm.hasError('required')">
@@ -24,7 +25,7 @@
           </mat-form-field>
         </div>
         <div class="form-group">
-          <mat-form-field class="col-lg-12">
+          <mat-form-field class="col-lg-12" style="margin-bottom: -1.25em" appearance="outline">
             <mat-label>Email</mat-label>
               <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
                 <mat-error *ngIf="signUpForm.hasError('email') && !signUpForm.hasError('required')">
@@ -36,7 +37,7 @@
           </mat-form-field>
         </div>
         <div class="form-group">
-          <mat-form-field  class="col-lg-12">
+          <mat-form-field  class="col-lg-12" style="margin-bottom: -1.25em" appearance="outline">
             <mat-label>Password</mat-label>
               <input type="password" matInput formControlName="password" placeholder="Enter the password">
                 <mat-error *ngIf="signUpForm.hasError('required')">
@@ -45,37 +46,34 @@
           </mat-form-field>
         </div>
         <div class="col-lg-12 text-center">
-          <button mat-button class="btn btn-primary signup" 
-            type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+          <button mat-button class="btn btn-primary signup " 
+            type="submit" [disabled]="signUpForm.invalid">Register</button>
         </div> 
-        <div class="col-lg-12 text-center">
-          <ul class="navbar-nav">
-            <li class="nav-item" routerLinkActive="accent" >
-              <a mat-button class="nav-link"  style="color:blue;" (click)="onSignIn()"><i>Alreade have account</i></a>
-            </li>
-          </ul>   
-        </div> 
-        <div class="col-lg-12 text-center">
-          <button mat-button class="custom" (click)="getService().GoogleAuth()">
-          <span class="left">
-            <img width="30px" class="gicon" alt="Google sign-in" 
-            src="https://img.icons8.com/material-sharp/24/ffffff/google-logo.png" />
+        <div class="text-center">
+          <span class="txt">
+            or use a social network
           </span> 
-          <span class="right">
-            Sign In with Google
-          </span> 
-          </button>
-        </div> 
-        <div class="col-lg-12 text-center">
-          <button mat-button class="customfb" (click)="getService().FacebookAuth()">
-            <span class="left">
-              <img width="30px" class="gicon" alt="Google sign-in" 
-                src="https://img.icons8.com/material-sharp/24/ffffff/facebook-circled--v1.png" />
-            </span> 
-            <span class="right">
-              Sign In with Facebook
-            </span> 
-          </button>
         </div>
+        <div class="col-lg-12 text-center btns">
+          <button mat-button  (click)="getService().GoogleAuth()">
+            <img  width="36px" class="rounded-circle" alt="Google sign-in" 
+            src="https://img.icons8.com/fluent/48/000000/google-logo.png" />
+          </button>
+          <button mat-button  (click)="getService().FacebookAuth()">
+              <img width="40px" class="rounded-circle" alt="Google sign-in" 
+              src="https://img.icons8.com/color/48/000000/facebook-circled--v1.png" />
+             
+            </button>
+        </div> 
+        <div class="text-center">
+          <hr>
+        </div>
+        <div class="col-lg-12 text-center">
+    
+      
+          <p>Already have account? <a class="link"  style="color:blue;" (click)="onSignIn()">Login</a>
+          </p>
+        </div> 
+        
       </form>
 

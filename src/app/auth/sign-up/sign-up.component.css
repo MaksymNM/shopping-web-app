@@ -1,8 +1,5 @@
 form{
-    margin-top: 10px;
-    background-color: rgb(243, 243, 243);
-    border: dimgray solid 2px;
-    border-radius: 5px;
+    margin-top: 30px;
     
 }
 
@@ -24,21 +21,6 @@ form{
      width: 100%;
  }
 
-
-
- mat-toolbar{
-     background-color: #FA9F16;
-     border-radius: 5px;
- }
-
- button{
-     background-color:#FA9F16 ;
- }
-
-.signup{
-    width: 260px;
-}
-
 .left{
     float: left;
 }
@@ -49,18 +31,27 @@ form{
     display: flex;
 }
 
-.custom{
-    background-color: #4285f4;
-    width: 260px;
+
+
+.signup{
+    width: 370px;
+    border-radius: 20px;
+    margin-bottom: 15px;
 }
 
-.customfb{
-    background-color:#3b5998;
-    width: 260px;
+
+
+.btns{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.gicon{
-    vertical-align: middle;
-    margin-right:40px; 
-    
+.link{
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.link:hover{
+    text-decoration: none;
+
 }

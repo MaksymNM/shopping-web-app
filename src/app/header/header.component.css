@@ -9,6 +9,10 @@
 
 } 
 
+a.accent:hover{
+    color: lightgray;
+}
+
 .menu{
     margin-left: 30px;
 }
@@ -42,19 +46,20 @@ li{
     margin-right: 10px;
 }
 
-.nav-link{
+.nav-link {
+    
     padding: 12px;
     vertical-align: middle;
+}
+
+.nav-link:hover{
+    color: black;
 }
 
 .nav_btn{  
     
     font-size: 16px;
     width: 125px;
-}
-
-a:hover{
-    color: black;
 }
 
 select{

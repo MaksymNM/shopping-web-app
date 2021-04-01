@@ -1,9 +1,10 @@
 form{
-    margin-top: 10px;
-    background-color: rgb(243, 243, 243);
-    border: dimgray solid 2px;
-    border-radius: 5px;
-    
+    margin-top: 30px;
+}
+.right{
+    margin-right: 10px;
+    float: right;
+    display: flex;
 }
 
 .btn{
@@ -22,48 +23,36 @@ form{
 
  mat-form-field{
      width: 100%;
+     
  }
 
 
 
- mat-toolbar{
-     background-color: #FA9F16;
-     border-radius: 5px;
- }
-
- button{
-     background-color:#FA9F16 ;
- }
 
 .signin{
-    width: 260px;
+    width: 370px;
+    border-radius: 20px;
+    margin-bottom: 15px;
 }
 
-.left{
-    float: left;
-}
-.right{
-    color: white;
-    margin-right: 20px;
-    float: right;
-    display: flex;
+
+
+.btns{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.custom{
-    background-color: #4285f4;
-    width: 260px;
+.link{
+    margin-left: 4px;
+    cursor: pointer;
 }
 
-.customfb{
-    background-color:#3b5998;
-    width: 260px;
+.link:hover{
+    text-decoration: none;
+
 }
 
-.gicon{
-    vertical-align: middle;
-    margin-right:40px; 
-    
-}
+   
 
 
 

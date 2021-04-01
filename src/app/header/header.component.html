@@ -7,21 +7,21 @@
       </span>
       <nav class="nav">
             <ul class="nav menu">
-              <li class="nav-item"  routerLinkActive="accent">
-                <a  mat-button class="nav-link nav_btn" routerLink='/products'>
+              <li class="nav-item" >
+                <a  mat-button class="nav-link nav_btn"  routerLinkActive="accent" routerLink='/products'>
                   {{'HEADER.PRODBTN' | translate}}
                 </a>
               </li>
-              <li class="nav-item" routerLinkActive="accent">
-                <a mat-button  class="nav-link nav_btn" routerLink='/favourites'>{{'HEADER.FAVBTN' | translate}}<span class="badge" *ngIf="getCount().countBadge > 0">{{getCount().countBadge}}</span>
+              <li class="nav-item" >
+                <a mat-button  class="nav-link nav_btn" routerLinkActive="accent" routerLink='/favourites'>{{'HEADER.FAVBTN' | translate}}<span class="badge" *ngIf="getCount().countBadge > 0">{{getCount().countBadge}}</span>
                 </a>
                 
               </li>
-              <li class="nav-item" routerLinkActive="accent">
-                <a mat-button class="nav-link nav_btn" routerLink='/card' >{{'HEADER.CARDBTN' | translate}}<span class="badge" *ngIf="getCountCard().countBadge > 0">{{getCountCard().countBadge}}</span></a>  
+              <li class="nav-item">
+                <a mat-button class="nav-link nav_btn" routerLinkActive="accent" routerLink='/card' >{{'HEADER.CARDBTN' | translate}}<span class="badge" *ngIf="getCountCard().countBadge > 0">{{getCountCard().countBadge}}</span></a>  
               </li>
-              <li class="nav-item" routerLinkActive="accent" *ngIf="getService().userData as user  " >
-                <a mat-button  class="nav-link nav_btn" routerLink='/admin-products' >{{'HEADER.ADMIN' | translate}}</a>
+              <li class="nav-item"  *ngIf="getService().userData as user  " >
+                <a mat-button  class="nav-link nav_btn" routerLinkActive="accent" routerLink='/admin-products' >{{'HEADER.ADMIN' | translate}}</a>
               </li>
               <li class="nav-item dropdown dropmenu">
                 <a class="nav-link dropdown-toggle nav_icon" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,8 +60,8 @@
                   <mat-icon >logout</mat-icon>
                 </a>
               </li>
-              <li class="nav-item" routerLinkActive="accent" *ngIf="!getService().userData as user">
-                <a mat-button class="nav-link align-middle nav_btn"  (click)="onSignIn()" ><span style="font-size: 18px;">{{'HEADER.SIGNINBTN' | translate}}</span></a>
+              <li class="nav-item"  *ngIf="!getService().userData as user">
+                <a mat-button class="nav-link align-middle nav_btn" routerLinkActive="accent"  (click)="onSignIn()" ><span style="font-size: 18px;">{{'HEADER.SIGNINBTN' | translate}}</span></a>
               </li>
               
               <li  *ngIf="getService().userData as user ">
