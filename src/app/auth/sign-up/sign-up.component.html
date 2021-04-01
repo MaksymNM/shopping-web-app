@@ -45,7 +45,7 @@
           </mat-form-field>
         </div>
         <div class="col-lg-12 text-center">
-          <button mat-button class="btn btn-primary" 
+          <button mat-button class="btn btn-primary signup" 
             type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
         </div> 
         <div class="col-lg-12 text-center">
@@ -56,12 +56,26 @@
           </ul>   
         </div> 
         <div class="col-lg-12 text-center">
-          <button mat-button class="btn btn-primary" 
-            type="button" (click)="getService().GoogleAuth()">Sign Up with Google</button>
+          <button mat-button class="custom" (click)="getService().GoogleAuth()">
+          <span class="left">
+            <img width="30px" class="gicon" alt="Google sign-in" 
+            src="https://img.icons8.com/material-sharp/24/ffffff/google-logo.png" />
+          </span> 
+          <span class="right">
+            Sign In with Google
+          </span> 
+          </button>
         </div> 
         <div class="col-lg-12 text-center">
-          <button mat-button class="btn btn-primary" 
-            type="button" (click)="getService().FacebookAuth()">Sign Up with Facebook</button>
+          <button mat-button class="customfb" (click)="getService().FacebookAuth()">
+            <span class="left">
+              <img width="30px" class="gicon" alt="Google sign-in" 
+                src="https://img.icons8.com/material-sharp/24/ffffff/facebook-circled--v1.png" />
+            </span> 
+            <span class="right">
+              Sign In with Facebook
+            </span> 
+          </button>
         </div>
       </form>
 

@@ -35,7 +35,35 @@ form{
      background-color:#FA9F16 ;
  }
 
+.signin{
+    width: 260px;
+}
 
+.left{
+    float: left;
+}
+.right{
+    color: white;
+    margin-right: 20px;
+    float: right;
+    display: flex;
+}
+
+.custom{
+    background-color: #4285f4;
+    width: 260px;
+}
+
+.customfb{
+    background-color:#3b5998;
+    width: 260px;
+}
+
+.gicon{
+    vertical-align: middle;
+    margin-right:40px; 
+    
+}
 
 
 

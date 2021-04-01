@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
 
 
 import { AngularFireModule } from '@angular/fire';
@@ -69,6 +70,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    CoolSocialLoginButtonsModule,
     
     
     ToastrModule.forRoot({positionClass: 'toast-top-center'  ,timeOut:1000}),
