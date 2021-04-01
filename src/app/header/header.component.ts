@@ -6,7 +6,7 @@ import { ToCardService } from '../shared/to-card.service';
 import { ToFavlistService } from '../shared/to-favlist.service';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import { SignInComponent } from '../auth/sign-in/sign-in.component';
-
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -23,9 +23,21 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private favlist: ToFavlistService,
     private cardList: ToCardService,
-    private dialog: MatDialog) { 
+    private dialog: MatDialog,
+    public translate: TranslateService) { 
+
+      translate.addLangs(['en', 'ru', 'fr']);
+      translate.setDefaultLang('en');
+
+      const browserLang = translate.getBrowserLang();
+      translate.use(browserLang.match(/en|ru|fr/) ? browserLang: 'en');
     }
 
+  setLang(language: string){
+    this.translate.use(language);
+
+  }
+    
   ngOnInit(): void {
    
    

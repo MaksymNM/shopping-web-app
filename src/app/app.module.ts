@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { CardComponent } from './card/card.component';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastrModule } from 'ngx-toastr';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -20,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
-import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
 import { AngularFireModule } from '@angular/fire';
@@ -70,8 +71,13 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    CoolSocialLoginButtonsModule,
-    
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     
     ToastrModule.forRoot({positionClass: 'toast-top-center'  ,timeOut:1000}),
     BrowserAnimationsModule,
@@ -92,3 +98,8 @@ import { FooterComponent } from './footer/footer.component';
   entryComponents:[FormComponent]
 })
 export class AppModule { }
+
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

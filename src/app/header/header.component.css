@@ -34,16 +34,12 @@
     color: lightgray;
 }
 
-/* .icon{
-    margin-top: 12px;
-} */
-
 li{
     padding: 0;
 }
 
 .menu{
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
 .nav-link{
@@ -51,17 +47,19 @@ li{
     vertical-align: middle;
 }
 
-a{  
+.nav_btn{  
     
     font-size: 16px;
-    width: 100px;
+    width: 125px;
 }
 
 a:hover{
     color: black;
 }
 
-
+select{
+    background-color:  #FA9F16;
+}
 
 hr{
     
@@ -92,3 +90,40 @@ hr{
     text-align: center;
   }
 
+.lang_icon{
+    max-width: 40px;
+    height: 40px;
+    vertical-align: middle;
+  }
+
+.s_lang_icon{
+    margin-top: -5px;
+    max-width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.left{
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 18px;
+    float: left;
+}
+
+.right{
+    margin-right: 10px;
+    float: right;
+    display: flex;
+}
+
+.dropdown-toggle::after{
+    color: black;
+}
+
+a.dropdown-item:hover{
+    background-color: #FA9F16;
+}
+
+.nav_icon{
+    width: 80px;
+}

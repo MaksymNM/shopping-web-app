@@ -8,37 +8,67 @@
       <nav class="nav">
             <ul class="nav menu">
               <li class="nav-item"  routerLinkActive="accent">
-                <a mat-button class="nav-link" routerLink='/products'>
-                  Products
+                <a  mat-button class="nav-link nav_btn" routerLink='/products'>
+                  {{'HEADER.PRODBTN' | translate}}
                 </a>
               </li>
               <li class="nav-item" routerLinkActive="accent">
-                <a mat-button  class="nav-link" routerLink='/favourites'>Favourite<span class="badge" *ngIf="getCount().countBadge > 0">{{getCount().countBadge}}</span>
+                <a mat-button  class="nav-link nav_btn" routerLink='/favourites'>{{'HEADER.FAVBTN' | translate}}<span class="badge" *ngIf="getCount().countBadge > 0">{{getCount().countBadge}}</span>
                 </a>
                 
               </li>
               <li class="nav-item" routerLinkActive="accent">
-                <a mat-button class="nav-link" routerLink='/card' >Card<span class="badge" *ngIf="getCountCard().countBadge > 0">{{getCountCard().countBadge}}</span></a>  
+                <a mat-button class="nav-link nav_btn" routerLink='/card' >{{'HEADER.CARDBTN' | translate}}<span class="badge" *ngIf="getCountCard().countBadge > 0">{{getCountCard().countBadge}}</span></a>  
               </li>
               <li class="nav-item" routerLinkActive="accent" *ngIf="getService().userData as user  " >
-                <a mat-button  class="nav-link" routerLink='/admin-products' >Admin</a>
+                <a mat-button  class="nav-link nav_btn" routerLink='/admin-products' >{{'HEADER.ADMIN' | translate}}</a>
+              </li>
+              <li class="nav-item dropdown dropmenu">
+                <a class="nav-link dropdown-toggle nav_icon" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="lang_icon" src="https://img.icons8.com/ios/48/000000/language.png"/>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div>
+                    <a  role="button" class="dropdown-item" (click)="setLang('ru')">
+                      <span style="margin-left: 10px;">Russian</span> 
+                      <img class="s_lang_icon right" src="https://img.icons8.com/color/48/000000/russian-federation.png"/>
+                    </a>
+                  </div>
+                  <div>
+                    <a  role="button" class="dropdown-item"  (click)="setLang('en')">
+                      <span style="margin-left: 10px;">
+                        English
+                      </span>
+                        <img class="s_lang_icon right" src="https://img.icons8.com/color/48/000000/usa.png"/>
+                    </a>
+                  </div>
+                  <div>
+                    <a  role="button" class="dropdown-item"  (click)="setLang('fr')">
+                      <span style="margin-left: 10px;">
+                        French
+                      </span>
+                        <img class="s_lang_icon right" src="https://img.icons8.com/color/48/000000/france.png"/>
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
             <ul class="nav">
               
-              <li class="nav-item" *ngIf="getService().userData as user">
-                <a mat-button  class="nav-link icon" (click)="onLogout()" >
+              <li class="nav-item " *ngIf="getService().userData as user">
+                <a mat-button  class="nav-link icon nav_btn" (click)="onLogout()" >
                   <mat-icon >logout</mat-icon>
                 </a>
               </li>
               <li class="nav-item" routerLinkActive="accent" *ngIf="!getService().userData as user">
-                <a mat-button class="nav-link align-middle"  (click)="onSignIn()" ><span style="font-size: 18px;">Sign In</span></a>
+                <a mat-button class="nav-link align-middle nav_btn"  (click)="onSignIn()" ><span style="font-size: 18px;">{{'HEADER.SIGNINBTN' | translate}}</span></a>
               </li>
               
               <li  *ngIf="getService().userData as user ">
                 <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : 'https://s.clipartkey.com/mpngs/s/152-1520367_user-profile-default-image-png-clipart-png-download.png'}}"
                   alt="{{user.displayName}}">
               </li>
+              
             </ul>   
       </nav>
     </mat-toolbar>

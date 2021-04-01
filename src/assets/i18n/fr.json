@@ -1,0 +1,9 @@
+{
+    "HEADER":{
+        "PRODBTN": "Des produits",
+        "FAVBTN": "Favoris",
+        "CARDBTN": "Carte",
+        "SIGNINBTN": "S'identifier",
+        "ADMIN": "Admin"
+    }
+}
