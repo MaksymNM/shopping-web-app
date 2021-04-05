@@ -59,9 +59,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignIn(){
-    encapsulation: ViewEncapsulation.None
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.panelClass='custom'
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     this.dialog.open(SignInComponent, dialogConfig);

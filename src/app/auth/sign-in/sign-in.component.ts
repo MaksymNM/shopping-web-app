@@ -59,7 +59,7 @@ export class SignInComponent implements OnInit {
   onSignUp(){
     this.onClose();
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.panelClass='custom'
+    
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     this.dialog.open(SignUpComponent, dialogConfig);
